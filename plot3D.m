@@ -1,15 +1,21 @@
 
-function plot3D(X,Y,Z,Lx,Ly,Lz,dx,dy,dz,T,isovalues,iter, t);
+function plot3D(X,Y,Z,Lx,Ly,Lz,dx,dy,dz,T,T_min,T_max,isovalues,iter, t);
 clf
 
 numisosurf=25; % number of isosurfaces
 
-%% recalculate scales (dsable this section to keep the static scale)
- T_max = max(T,[],'all');
- T_min = min(T,[],'all');
- isovalues=linspace(T_min,T_max,numisosurf);
+%% recalculate scales (disable this section to keep the static scale)
+%  T_max = max(T,[],'all');
+%  T_min = min(T,[],'all');
+%  isovalues=linspace(T_min,T_max,numisosurf);
 
- %%
+%% colorbar
+format bank
+cbh = colorbar ; %Create Colorbar
+cbh.Ticks = 1:25; %Create 8 ticks from zero to 1
+cbh.TickLabels = num2cell(round(linspace(T_min,T_max,numisosurf),2));    %Replace the labels of these 8 ticks with the numbers 1 to 8
+ 
+%%
 num=numel(isovalues);
  for i=1:num     
      p(i)=patch(isosurface(X,Y,Z,T,isovalues(i)));
@@ -21,7 +27,7 @@ set(p, 'CDataMapping','direct', 'FaceColor','flat', 'EdgeColor','none')
 clr = jet(num);
 colormap(clr);
 caxis([0 num])
-colorbar
+%colorbar
 
 box off; grid on; axis tight; daspect([1 1 1])
 

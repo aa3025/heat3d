@@ -139,7 +139,7 @@ if BC2==1
 %       T(:,Nx,:) =  T(:,Nx-2,:) +Q_right*2*dx;      %  flux on right
     
 %       T(:,:,1)  =  T(:,:,3)    +Q_bott*2*dz;       %  flux on bottom
-%       T(:,:,Nz) =  T(:,:,Nz-2) +Q_top*2*dz;        %  flux on top
+       T(:,:,Nz) =  T(:,:,Nz-2) +Q_top*2*dz;        %  flux on top
 end    
    
 
@@ -162,7 +162,7 @@ end
   T(i,j,k)=T_new(i,j,k);
 
 if mod(iter,2)==0  % e.g. plot every 5 iter
-    plot3D(X,Y,Z,Lx,Ly,Lz,dx,dy,dz,T,isovalues,iter,t); 
+    plot3D(X,Y,Z,Lx,Ly,Lz,dx,dy,dz,T,T_min,T_max,isovalues,iter,t); 
 end
 
 if video >0 
