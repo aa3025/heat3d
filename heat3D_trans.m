@@ -130,7 +130,7 @@ while t<=tmax%error >= tol_ss % by tmax or by tolerance (for Staeady State)
 if BC2==1
       
 % grad T via central difference -- Neuman B.C. at the walls (constant fluxes or grad(T) )
-% uncomment the respective walls
+% uncomment the respective walls to enable T calculation at the boundary nodes from Q
 
         T(1,:,:)  =  T(3,:,:)     +Q_front*2*dy;     %  flux on front
         T(Ny,:,:) =  T(Ny-2,:,:)  +Q_back*2*dy;      %  flux on back

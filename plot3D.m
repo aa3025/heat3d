@@ -12,8 +12,8 @@ numisosurf=25; % number of isosurfaces
 %% colorbar
 format bank
 cbh = colorbar ; %Create Colorbar
-cbh.Ticks = 1:25; %Create 8 ticks from zero to 1
-cbh.TickLabels = num2cell(round(linspace(T_min,T_max,numisosurf),2));    %Replace the labels of these 8 ticks with the numbers 1 to 8
+cbh.Ticks = 1:numisosurf; %Create numisosurf ticks from 1 to numisosurf
+cbh.TickLabels = num2cell(round(linspace(T_min,T_max,numisosurf),2));    %Replace the labels of these numisosurf ticks with the numbers from T_min to T_max
  
 %%
 num=numel(isovalues);
